@@ -1,7 +1,16 @@
 package fi.haagahelia.course.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
 
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	private String title;
 	private String author;
 	private int year;
@@ -13,11 +22,19 @@ public class Book {
 	}
 	
 	public Book(String title, String author, int year, String isbn, double price) {
+		super();
 		this.setTitle(title);
 		this.setAuthor(author);
 		this.setYear(year);
 		this.setIsbn(isbn);
 		this.setPrice(price);		
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	public String getTitle() {
@@ -53,7 +70,7 @@ public class Book {
 	
 	@Override
 	public String toString() {
-		return " " ;
+		return "Book: "+ title ;
 	}
 	
 }
