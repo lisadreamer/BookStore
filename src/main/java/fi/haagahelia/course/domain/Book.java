@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import fi.haagahelia.course.domain.Category;
 
 @Entity
 public class Book {
@@ -17,17 +21,22 @@ public class Book {
 	private String isbn;
 	private double price;
 	
+	@ManyToOne
+    @JoinColumn(name = "categoryid")
+    private Category category;
+	
 	public Book() {
 		
 	}
 	
-	public Book(String title, String author, int year, String isbn, double price) {
+	public Book(String title, String author, int year, String isbn, double price, Category category) {
 		super();
 		this.setTitle(title);
 		this.setAuthor(author);
 		this.setYear(year);
 		this.setIsbn(isbn);
-		this.setPrice(price);		
+		this.setPrice(price);	
+		this.setCategory(category);
 	}
 	
 	public Long getId() {
@@ -66,6 +75,14 @@ public class Book {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	
 	@Override
