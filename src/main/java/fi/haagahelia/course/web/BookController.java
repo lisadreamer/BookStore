@@ -14,8 +14,6 @@ import fi.haagahelia.course.domain.BookRepository;
 import fi.haagahelia.course.domain.Book;
 import fi.haagahelia.course.domain.CategoryRepository;
 
-
-
 @Controller
 public class BookController {
 	@Autowired
@@ -23,6 +21,11 @@ public class BookController {
 	
 	@Autowired
 	private CategoryRepository crepository; 
+	
+	@RequestMapping(value="/login")
+    public String login() {	
+        return "login";
+    }	
 	
     @RequestMapping(value="/booklist")
     public String bookList(Model model) {	
