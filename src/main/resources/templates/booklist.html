@@ -28,7 +28,7 @@
 		    <th>ISBN</th>
 		    <th>Year</th>
 		    <th>Category</th>	
-		    <th sec:authorize="hasRole('ADMIN')"> </th>	    
+		    <th sec:authorize="hasAuthority('ADMIN')"> </th>	    
 		</tr>  
     	<tr th:each = "book : ${books}" >
     		<td th:text="${book.author}"></td>
@@ -36,7 +36,7 @@
     		<td th:text="${book.isbn}"></td>
     		<td th:text="${book.year}"></td>
     		<td th:text="${book.category.name}"></td>
- 			<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
+ 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
     	</tr>
      </table>
 	 <a href="/add" class="btn btn-success">Add Book</a> 
