@@ -15,17 +15,17 @@ import fi.haagahelia.course.domain.UserRepository;
  **/
 @Service
 public class UserDetailServiceImpl implements UserDetailsService  {
-	private final UserRepository repository;
+	private final UserRepository urepository;
 
 	@Autowired
 	public UserDetailServiceImpl(UserRepository userRepository) {
-		this.repository = userRepository;
+		this.urepository = userRepository;
 	}
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
     {   
-    	User curruser = repository.findByUsername(username);
+    	User curruser = urepository.findByUsername(username);
         UserDetails user = new org.springframework.security.core.userdetails.User(username, curruser.getPasswordHash(), 
         		AuthorityUtils.createAuthorityList(curruser.getRole()));
         return user;
