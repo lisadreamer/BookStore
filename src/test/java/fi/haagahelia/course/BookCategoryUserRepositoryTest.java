@@ -19,7 +19,7 @@ import fi.haagahelia.course.domain.UserRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class BookRepositoryTest {
+public class BookCategoryUserRepositoryTest {
 
 	@Autowired
     private BookRepository brep;
