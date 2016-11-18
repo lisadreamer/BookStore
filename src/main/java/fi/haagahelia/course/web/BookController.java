@@ -23,6 +23,10 @@ public class BookController {
 	@Autowired
 	private CategoryRepository crepository; 
 	
+	@RequestMapping(value="/")
+    public String firstr() {	
+        return "booklist";
+    }
 	@RequestMapping(value="/login")
     public String login() {	
         return "login";
